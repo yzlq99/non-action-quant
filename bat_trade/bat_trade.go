@@ -35,7 +35,7 @@ func (b *BatTrade) newConvertibleBond() {
 }
 
 func (b *BatTrade) newStock() {
-	newStock, err := b.EmCli.GetNewStockList()
+	newStock, err := b.EmCli.GetCanBuyNewStockList()
 	if err != nil {
 		log.Panic(err)
 	}

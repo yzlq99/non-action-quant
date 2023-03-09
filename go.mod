@@ -5,7 +5,7 @@ go 1.20
 require (
 	github.com/robfig/cron/v3 v3.0.1
 	github.com/spf13/viper v1.15.0
-	github.com/yzlq99/eastmoneyapi v0.0.2
+	github.com/yzlq99/eastmoneyapi v0.0.3
 )
 
 require (
@@ -30,5 +30,3 @@ require (
 	gopkg.in/ini.v1 v1.67.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
-
-replace github.com/yzlq99/eastmoneyapi => /home/yzl/workspace/eastmoneyapi
