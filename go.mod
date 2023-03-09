@@ -3,6 +3,7 @@ module github.com/yzlq99/non-action-quant
 go 1.20
 
 require (
+	github.com/robfig/cron/v3 v3.0.1
 	github.com/spf13/viper v1.15.0
 	github.com/yzlq99/eastmoneyapi v0.0.2
 )
@@ -30,3 +31,4 @@ require (
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
 
+replace github.com/yzlq99/eastmoneyapi => /home/yzl/workspace/eastmoneyapi
