@@ -12,6 +12,7 @@ var defaultConfigFile = "./configs/config.yaml"
 
 type Config struct {
 	EastMoneyClientConfig client.EastMoneyClientConfig
+	BatTradeSpec          string
 }
 
 var conf *Config

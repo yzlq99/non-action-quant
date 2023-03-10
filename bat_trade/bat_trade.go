@@ -4,6 +4,7 @@ import (
 	"log"
 
 	"github.com/yzlq99/eastmoneyapi/client"
+	"github.com/yzlq99/non-action-quant/config"
 	"github.com/yzlq99/non-action-quant/utils"
 )
 
@@ -13,7 +14,8 @@ type BatTrade struct {
 }
 
 func (b *BatTrade) Spec() string {
-	return "8 11 * * 1-5"
+	// return "8 11 * * 1-5"
+	return config.GetConfig().BatTradeSpec
 }
 
 func (b *BatTrade) Run() {
@@ -27,6 +29,11 @@ func (b *BatTrade) newConvertibleBond() {
 		log.Panic(err)
 	}
 
+	if bonds == nil || len(bonds.Data) <= 0 {
+		log.Print("今天无新债申购")
+		return
+	}
+
 	res, err := b.EmCli.SubmitBatTrade(bonds.GetSubmitBatTradeParams())
 	if err != nil {
 		log.Panic(err)
@@ -38,6 +45,11 @@ func (b *BatTrade) newStock() {
 	newStock, err := b.EmCli.GetCanBuyNewStockList()
 	if err != nil {
 		log.Panic(err)
+	}
+
+	if newStock == nil || len(newStock.NewStockList) <= 0 {
+		log.Print("今天无新股申购")
+		return
 	}
 
 	res, err := b.EmCli.SubmitBatTrade(newStock.GetSubmitBatTradeParams())
